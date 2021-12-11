@@ -12,3 +12,5 @@ This is a very basic weather app I have built which uses the OpenWeatherMap API 
 + CSS
 + FlexBox
 + JavaScript
+
+![WeatherAppScreenShot](https://user-images.githubusercontent.com/82173102/145694042-311b986e-a1a6-4c4a-981f-948c25ae7de2.jpg)
