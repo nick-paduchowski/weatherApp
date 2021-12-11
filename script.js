@@ -1,5 +1,5 @@
 // Base Url Used as a Template for the Fetch
-const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&appid=4f774700c5cf6788a4ec2149c7c5ab87';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&appid=***************************';
 
 // Weather Object to Hold Functions for Updating the Page
 
