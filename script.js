@@ -4,7 +4,7 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Toronto&units
 // Weather Object to Hold Functions for Updating the Page
 
 const weather = {
-    "apiKey": '4f774700c5cf6788a4ec2149c7c5ab87', //API Key
+    "apiKey": '***************************', //API Key
     fetchWeather: function(city){ //Function that calls the API with a specified city
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=' + this.apiKey) //configure API request 
         .then((response) => response.json()) // Get Response in JSON format
