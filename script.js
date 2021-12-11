@@ -1,30 +1,36 @@
+// Base Url Used as a Template for the Fetch
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Toronto&units=metric&appid=4f774700c5cf6788a4ec2149c7c5ab87';
+
+// Weather Object to Hold Functions for Updating the Page
+
 const weather = {
-    "apiKey": '4f774700c5cf6788a4ec2149c7c5ab87',
-    fetchWeather: function(city){
-        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=' + this.apiKey)
-        .then((response) => response.json())
-        .then((data) => this.displayWeather(data));
+    "apiKey": '4f774700c5cf6788a4ec2149c7c5ab87', //API Key
+    fetchWeather: function(city){ //Function that calls the API with a specified city
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=' + this.apiKey) //configure API request 
+        .then((response) => response.json()) // Get Response in JSON format
+        .then((data) => this.displayWeather(data)); // Pass the JSON data to the displayWeather Function
     },
-    displayWeather: function(data){
-        const city = data.name;
-        const temp = Math.floor(data.main.temp);
-        const description = data.weather[0].main;
-        const icon = data.weather[0].icon;
-        const humidity = data.main.humidity;
-        const wind = data.wind.speed;
-        console.log(city,icon,temp,description,humidity,wind);
-        document.querySelector('.city').innerHTML = "Weather in " + city;
-        document.querySelector('.icon').src = "https://openweathermap.org/img/wn/" + icon + ".png";
-        document.querySelector('.temp').innerHTML = temp + "°C";
-        document.querySelector('.description').innerHTML = description;
-        document.querySelector('.humidity').innerHTML = "Humidity: " + humidity + "%";
-        document.querySelector('.wind').innerHTML = "Wind Speed: " + wind + " km/h";
+    displayWeather: function(data){ // Function for displaying/changing the weather data on the site
+        const city = data.name; // Save the city from  the JSON object
+        const temp = Math.floor(data.main.temp); // Save the rounded down temperature from the JSON object
+        const description = data.weather[0].main; // Save the description from the JSON object
+        const icon = data.weather[0].icon; // Save the icon from the JSON object
+        const humidity = data.main.humidity; // Save the humidity from the JSON object
+        const wind = data.wind.speed; // Save the wind speed from the JSON object
+        console.log(city,icon,temp,description,humidity,wind); // Logs the variales to the console to ensure the proper values are saved
+        document.querySelector('.city').innerHTML = "Weather in " + city; // Change the city 
+        document.querySelector('.icon').src = "https://openweathermap.org/img/wn/" + icon + ".png"; // Change the ICON
+        document.querySelector('.temp').innerHTML = temp + "°C"; // Change the temp
+        document.querySelector('.description').innerHTML = description; // Change the description
+        document.querySelector('.humidity').innerHTML = "Humidity: " + humidity + "%"; // Change the humidity
+        document.querySelector('.wind').innerHTML = "Wind Speed: " + wind + " km/h"; // Change the wind speed
     },
-    search: function(){
+    search: function(){ // Gets the value of the search bar and passes it to the fetchWeather function
         this.fetchWeather(document.querySelector('.search-bar').value);
-    }
+        }
 }
+
+// Adds event listener for the search bar click
 
 document.querySelector('.search button').addEventListener("click", () => {
         weather.search();
